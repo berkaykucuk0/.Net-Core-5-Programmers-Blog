@@ -1,0 +1,46 @@
+﻿@using Microsoft.Extensions.Options
+@using ProgrammersBlog.Entities.Concrete
+@using ProgrammersBlog.Shared.Entities.Concrete
+@inject IOptionsSnapshot<WebsiteInfo> WebSiteInfo
+@{ var websiteInfo = WebSiteInfo.Value;
+    Layout = null;
+    ViewBag.Title = "500 Hatası";
+
+    MvcErrorModel errorModel = ViewData["MvcErrorModel"] as MvcErrorModel; 
+}
+
+<!DOCTYPE html>
+<html lang="tr" class="no-js">
+<head>
+    <!-- Mobile Specific Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="img/fav.png">
+    <!-- Author Meta -->
+    <meta name="author" content="@websiteInfo.SeoAuthor">
+    <!-- Meta Description -->
+    <meta name="description" content="@websiteInfo.SeoDescription">
+    <!-- Meta Keyword -->
+    <meta name="keywords" content="@websiteInfo.SeoTags">
+    <!-- meta character set -->
+    <meta charset="UTF-8">
+    <!-- Site Title -->
+    <title>@websiteInfo.Title | @websiteInfo.MenuTitle</title>
+   
+    <link rel="stylesheet" href="~/css/error/500.css">
+     
+</head>
+<body>
+    <div class="full-screen">
+        <div class='container'>
+            <span class="error-num">5</span>
+            <div class='eye'></div>
+            <div class='eye'></div>
+
+            <p class="sub-text">@errorModel.Message</p>
+            <a asp-controller="Home" asp-action="Index">Anasayfaya dönmek için tıklayın...</a>
+        </div>
+    </div>
+
+</body>
+</html>

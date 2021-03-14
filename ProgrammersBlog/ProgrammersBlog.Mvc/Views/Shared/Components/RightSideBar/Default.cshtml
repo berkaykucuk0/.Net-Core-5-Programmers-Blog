@@ -1,0 +1,83 @@
+﻿@model ProgrammersBlog.Mvc.Models.RightSiteBarViewModel
+
+<!-- Start popular-course Area -->
+<section class="popular-course-area section-gap">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="menu-content pb-70 col-lg-8">
+                <div class="title text-center">
+                    <h1 class="mb-10">Kategoriler</h1>
+                    <p>Kategoriler</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="active-popular-carusel">
+                <div class="single-popular-carusel">
+
+                    <div class="details">
+                        <a asp-controller="Home" asp-action="Index" >
+                            <h4>
+                               Hepsi
+                            </h4>
+                        </a>
+                    </div>
+                </div>
+                @foreach (var category in Model.Categories)
+                {
+                    <div class="single-popular-carusel">
+
+                        <div class="details">
+                            <a asp-controller="Home" asp-action="Index" asp-route-categoryId="@category.Id">
+                                <h4>
+                                    @category.Name
+                                </h4>
+                            </a>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Start blog Area -->
+<section class="blog-area section-gap" id="blog">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="menu-content pb-70 col-lg-8">
+                <div class="title text-center">
+                    <h1 class="mb-10">En Çok Okunan Makaleler</h1>
+                    <p>En Çok Okunan Makaleler</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var article in Model.Articles)
+            {
+                <div class="col-lg-3 col-md-6 single-blog">
+                    <div class="thumb">
+                        <img class="img-fluid" src="~/img/@article.Thumbnail" alt="">
+                    </div>
+                    <p class="meta">@article.CreateDate.ToShortDateString() | @article.CreatedByName</p>
+                    <a href="blog-single.html">
+                        <h5>@article.Title</h5>
+                    </a>
+                    <p>
+                        @if (article.Content.Length > 50)
+                        {
+                             @article.Content.Substring(0, 50) 
+                        }
+                        else
+                        {
+                             @article.Content
+                        }
+                    </p>
+                    <a asp-controller="Article" asp-action="Detail" asp-route-articleId="@article.Id" class="details-btn d-flex justify-content-center align-items-center"><span class="details">Tümünü Gör </span><span class="fas fa-greater-than mr-2"></span></a>
+                </div>
+
+            }
+        </div>
+    </div>
+</section>
+<!-- End blog Area -->
