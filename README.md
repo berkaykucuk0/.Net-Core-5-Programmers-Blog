@@ -1,5 +1,5 @@
 # .Net-Core-5-Programmers-Blog
-Asp .Net Core 5 Blog Uygulaması
+Asp .Net Core 5 
 
 ![2](https://user-images.githubusercontent.com/73891330/111068373-8f302980-84d9-11eb-9abb-8e443e044e87.PNG)
 ![3](https://user-images.githubusercontent.com/73891330/111068374-8fc8c000-84d9-11eb-9605-f3f688ae6eaa.PNG)
