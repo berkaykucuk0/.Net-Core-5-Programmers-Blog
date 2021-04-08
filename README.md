@@ -1,12 +1,8 @@
 # .Net-Core-5-Programmers-Blog
-Asp .Net Core 5 
+Asp .Net Core 5
+---------------------------------------------------Change your email and email password in appsettings.json-----------------------------------------------------------------
 
-![2](https://user-images.githubusercontent.com/73891330/111068373-8f302980-84d9-11eb-9abb-8e443e044e87.PNG)
-![3](https://user-images.githubusercontent.com/73891330/111068374-8fc8c000-84d9-11eb-9605-f3f688ae6eaa.PNG)
-![4](https://user-images.githubusercontent.com/73891330/111068375-90615680-84d9-11eb-99fd-ce49fe6433a3.PNG)
-![5](https://user-images.githubusercontent.com/73891330/111068376-90615680-84d9-11eb-8c2e-a7c53b493d42.PNG)
-![6](https://user-images.githubusercontent.com/73891330/111068377-90f9ed00-84d9-11eb-9538-738cf54164cf.PNG)
-![1](https://user-images.githubusercontent.com/73891330/111068379-922b1a00-84d9-11eb-95cd-272a80d1e9e2.PNG)
+
 
 
 Developing a Project With N Layered Architecture
