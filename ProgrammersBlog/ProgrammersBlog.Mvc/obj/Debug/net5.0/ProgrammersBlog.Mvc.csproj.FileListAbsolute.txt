@@ -457,3 +457,11 @@ C:\Users\Berkay Küçük\source\repos\ProgrammersBlog\ProgrammersBlog.Mvc\bin\De
 C:\Users\Berkay Küçük\source\repos\ProgrammersBlog\ProgrammersBlog.Mvc\obj\Debug\net5.0\Razor\Areas\Admin\Views\Options\About.cshtml.g.cs
 C:\Users\Berkay Küçük\source\repos\ProgrammersBlog\ProgrammersBlog.Mvc\obj\Debug\net5.0\Razor\Areas\Admin\Views\Options\EmailSettings.cshtml.g.cs
 C:\Users\Berkay Küçük\source\repos\ProgrammersBlog\ProgrammersBlog.Mvc\obj\Debug\net5.0\Razor\Areas\Admin\Views\Options\GeneralSettings.cshtml.g.cs
+C:\Users\Berkay Küçük\source\repos\ProgrammersBlog\ProgrammersBlog.Mvc\obj\Debug\net5.0\Razor\Areas\Admin\Views\Contact\Index.cshtml.g.cs
+C:\Users\Berkay Küçük\source\repos\ProgrammersBlog\ProgrammersBlog.Mvc\obj\Debug\net5.0\Razor\Views\User\Detail.cshtml.g.cs
+C:\Users\Berkay Küçük\source\repos\ProgrammersBlog\ProgrammersBlog.Mvc\obj\Debug\net5.0\Razor\Areas\Admin\Views\Page\Index.cshtml.g.cs
+C:\Users\Berkay Küçük\source\repos\ProgrammersBlog\ProgrammersBlog.Mvc\obj\Debug\net5.0\Razor\Areas\Admin\Views\Page\Add.cshtml.g.cs
+C:\Users\Berkay Küçük\source\repos\ProgrammersBlog\ProgrammersBlog.Mvc\obj\Debug\net5.0\Razor\Areas\Admin\Views\Page\Update.cshtml.g.cs
+C:\Users\Berkay Küçük\source\repos\ProgrammersBlog\ProgrammersBlog.Mvc\obj\Debug\net5.0\Razor\Views\Article\GetAllArticles.cshtml.g.cs
+C:\Users\Berkay Küçük\source\repos\ProgrammersBlog\ProgrammersBlog.Mvc\obj\Debug\net5.0\Razor\Views\Home\_SliderPartial.cshtml.g.cs
+C:\Users\Berkay Küçük\source\repos\ProgrammersBlog\ProgrammersBlog.Mvc\obj\Debug\net5.0\Razor\Views\Shared\_LayoutSlider.cshtml.g.cs

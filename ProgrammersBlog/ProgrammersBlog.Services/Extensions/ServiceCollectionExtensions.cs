@@ -24,6 +24,8 @@ namespace ProgrammersBlog.Services.Extensions
             serviceCollection.AddScoped<ICategoryService, CategoryManager>();
             serviceCollection.AddScoped<IArticleService, ArticleManager>();
             serviceCollection.AddScoped<ICommentService, CommentManager>();
+            serviceCollection.AddScoped<IContactService, ContactManager>();
+            serviceCollection.AddScoped<IPageService, PageManager>();
             serviceCollection.AddSingleton<IMailService, MailManager>(); //bi tane manager oluşturulsun hep bu kullanılsın demek singleton
             serviceCollection.AddIdentity<User, Role>(options=> 
             {

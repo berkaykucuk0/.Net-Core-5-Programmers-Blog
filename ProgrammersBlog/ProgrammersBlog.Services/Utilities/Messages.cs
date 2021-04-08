@@ -121,5 +121,59 @@ namespace ProgrammersBlog.Services.Utilities
                 return $"{createdByName} tarafından yorum başarıyla onaylanmıştır.";
             }
         }
+
+        public class Contact
+        {
+           
+            public static string Add(string createdByName)
+            {
+                return $"Sayın {createdByName}, site iletişim bilgileri başarıyla eklenmiştir.";
+            }
+
+            public static string Update(string createdByName)
+            {
+                return $"Sayın {createdByName} ; site iletişim bilgileri başarıyla güncellenmiştir.";
+            }
+        }
+
+        public static class Page
+        {
+            public static string NotFound(bool isPlural) //plural tekil mi çoğul mu 
+            {
+                if (isPlural)
+                {
+                    return "Hiçbir sayfa bulunamadı";
+                }
+                else
+                {
+                    return "Böyle bir sayfa bulunamadı";
+                }
+            }
+
+            public static string Add(string pageTitle)
+            {
+                return $"{pageTitle} adlı sayfa başarıyla eklenmiştir.";
+            }
+
+            public static string Update(string pageTitle)
+            {
+                return $"{pageTitle} adlı sayfa başarıyla güncellenmiştir.";
+            }
+            public static string Delete(string pageTitle)
+            {
+                return $"{pageTitle} adlı sayfa başarıyla  silinmiştir.";
+            }
+
+            public static string HardDelete(string pageTitle)
+            {
+                return $"{pageTitle} adlı sayfa başarıyla veritabanından silinmiştir.";
+            }
+
+            public static string NonDeleted()
+            {
+                return "Bir hata oluştu! Sayfa silinememiştir";
+            }
+            
+        }
     }
 }

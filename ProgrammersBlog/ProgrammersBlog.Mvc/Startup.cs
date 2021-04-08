@@ -53,7 +53,7 @@ namespace ProgrammersBlog.Mvc
 
             }).AddNToastNotifyToastr();
             services.AddSession();
-            services.AddAutoMapper(typeof(CategoryProfile), typeof(ArticleProfile), typeof(UserProfile),typeof(ViewModelsProfile),typeof(CommentProfile));
+            services.AddAutoMapper(typeof(CategoryProfile), typeof(ArticleProfile), typeof(UserProfile),typeof(ViewModelsProfile),typeof(CommentProfile),typeof(ContactProfile));
             services.LoadMyServices(connectionString:Configuration.GetConnectionString("LocalDb"));
             services.AddScoped<IImageHelper, ImageHelper>();
             services.ConfigureApplicationCookie(options =>
@@ -65,7 +65,7 @@ namespace ProgrammersBlog.Mvc
                     Name = "ProgrammersBlog",
                     HttpOnly = true,
                     SameSite=SameSiteMode.Strict,
-                    SecurePolicy=CookieSecurePolicy.SameAsRequest //Always olmalý normalde
+                    SecurePolicy=CookieSecurePolicy.Always //Always olmalý normalde
 
                 };
 
@@ -85,7 +85,7 @@ namespace ProgrammersBlog.Mvc
                 app.UseStatusCodePages();
             }
             app.UseSession();
-            app.UseStaticFiles();
+            app.UseStaticFiles(); // wwwroot u kontrol eder
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();

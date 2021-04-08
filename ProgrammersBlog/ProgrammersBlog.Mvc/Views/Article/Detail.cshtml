@@ -14,94 +14,89 @@
         <div class="row d-flex align-items-center justify-content-center">
             <div class="about-content col-lg-12">
                 <h1 class="text-white">
-                    Popular Courses
+                    @Model.ArticleDto.Article.Title
                 </h1>
-                <p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="courses.html"> Popular Courses</a></p>
+                <p class="text-white link-nav"><a asp-controller="Home" asp-action="Index">Anasayfa </a>  <span class="lnr lnr-arrow-right"></span> <a asp-controller="Article" asp-action="Detail" asp-route-articleId="@Model.ArticleDto.Article.Id">@Model.ArticleDto.Article.Title</a></p>
             </div>
         </div>
     </div>
 </section>
 <!-- End banner Area -->
-<!-- Start course-details Area -->
-<section class="course-details-area pt-120">
+
+
+<section class="post-content-area single-post-area">
     <div class="container">
         <div class="row">
-
-            <div class="col-lg-8 left-contents">
-                <div class="main-image">
-                    <img class="img-fluid" src="~/img/@Model.ArticleDto.Article.Thumbnail" alt="" style="max-width:500px; max-height:500px">
-                </div>
-                <div class="jq-tab-wrapper" id="horizontalTab">
-                    <div class="jq-tab-menu">
-                        <div class="jq-tab-title active" data-tab="1">@Model.ArticleDto.Article.Title</div>
-                        <div class="jq-tab-title" data-tab="4">Yorumlar</div>
-
-                    </div>
-                    <div class="jq-tab-content-wrapper">
-                        <hr>
-                        @Html.Raw(Model.ArticleDto.Article.Content)
-                        <hr>
-                        <div class="jq-tab-content comment-wrap" data-tab="4">
-                            <partial name="~/Views/Comment/_CommentAddPartial.cshtml" model="new CommentAddDto{ArticleId =  Model.ArticleDto.Article.Id}" />
-                            <div class="comments-area" id="comments">
-                                <h4>Yorumlar</h4>
-                                @foreach (var comment in Model.ArticleDto.Article.Comments)
-                                {
-                                    <div class="comment-list">
-                                        <div class="single-comment justify-content-between d-flex">
-                                            <div class="user justify-content-between d-flex">
-                                                <div class="thumb">
-                                                    <img src="~/img/userImages/defaultUser.png" style="max-width:50px; max-height:50px">
-                                                </div>
-                                                <div class="desc">
-                                                    <h5>@comment.CreatedByName</h5>
-                                                    <p class="date">@comment.CreateDate.ToShortDateString()</p>
-                                                    <p class="comment">
-                                                        @comment.Text
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                }
-                            </div>
+            <div class="col-lg-8 posts-list">
+                <div class="single-post row">
+                    <div class="col-lg-12">
+                        <div class="feature-img">
+                            <img class="rounded mx-auto d-block mb-3" src="~/img/@Model.ArticleDto.Article.Thumbnail" alt="" style="max-width:500px; max-height:500px">
                         </div>
+                    </div>
+                    <div class="col-lg-3  col-md-3 meta-details">
+                      
+                        <div class="user-details row">
+                            <p class="user-name col-lg-12 col-md-12 col-6"><a href="#">@Model.ArticleDto.Article.Category.Name</a><span class="lnr lnr-bookmark"></span></p>
+                            <p class="user-name col-lg-12 col-md-12 col-6"><a href="#">@Model.ArticleDetailRightSideBarViewModel.User.UserName</a> <span class="lnr lnr-user"></span></p>
+                            <p class="date col-lg-12 col-md-12 col-6"><a href="#">@Model.ArticleDto.Article.CreateDate.ToShortDateString()</a> <span class="lnr lnr-calendar-full"></span></p>
+                            <p class="view col-lg-12 col-md-12 col-6"><a href="#">@Model.ArticleDto.Article.ViewsCount </a> <span class="lnr lnr-eye"></span></p>
+                            <p class="comments col-lg-12 col-md-12 col-6"><a href="#">@Model.ArticleDto.Article.CommentsCount Yorum</a> <span class="lnr lnr-bubble"></span></p>
+                        </div>
+                    </div>
+                    <div class="col-lg-9 col-md-9">
+                        <h3 class="mt-20 mb-20">@Model.ArticleDto.Article.Title</h3>
+                        <p class="excert">
+                            @Model.ArticleDto.Article.Content
+                        </p>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="quotes">
+                            <h4>Not</h4>
+                            <p>@Model.ArticleDto.Article.Note</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comments-area">
+                    <h4>Yorumlar</h4>
+                    <div class="comment-list">
+                        @foreach (var comment in Model.ArticleDto.Article.Comments)
+                        {
+                            <div class="single-comment justify-content-between d-flex">
+                                <div class="user justify-content-between d-flex">
+                                    <div class="thumb">
+                                        <img src="~/img/@Model.ArticleDto.Article.Thumbnail"  alt="" style="width:90px; height:60px">
+                                    </div>
+                                    <div class="desc">
+                                        <h5><a href="#">@comment.CreatedByName</a></h5>
+                                        <p class="date">@comment.CreateDate.ToShortDateString()</p>
+                                        <p class="comment">
+                                            @if (comment.Text.Length > 100)
+                                            {
+                                                @comment.Text.Substring(0, 100);
+                                            }
+                                            else
+                                            {
+                                                @comment.Text
+                                            }
+                                        </p>
+                                    </div>
+                                </div>                              
+                            </div>
+                        }
 
                     </div>
                 </div>
+                <partial name="~/Views/Comment/_CommentAddPartial.cshtml" model="new CommentAddDto{ArticleId = Model.ArticleDto.Article.Id}" />
             </div>
-            <div class="col-lg-4 right-contents">
-                <ul>
-                    <li>
-                        <p>Yazar </p>
-                        <span class="or">@Model.ArticleDto.Article.CreatedByName</span>
-                    </li>
-                    <li>
-                        <p>Oluşturulma Tarihi</p>
-                        <span>@Model.ArticleDto.Article.CreateDate.ToShortDateString()</span>
-                    </li>
-                    <li>
-                        <p>Son Düzenlenme Tarihi </p>
-                        <span>@Model.ArticleDto.Article.ModifiedDate.ToShortDateString()</span>
-                    </li>
-                    <li>
-                        <p>Okunma Sayısı</p>
-                        <span>@Model.ArticleDto.Article.ViewsCount</span>
-                    </li>
-                    <li>
-                        <p>Yorum Sayısı</p>
-                        <span>@Model.ArticleDto.Article.CommentsCount</span>
-                    </li>
-                    <li>
-                        <p>Kategori</p>
-                        <span>@Model.ArticleDto.Article.Category.Name</span>
-                    </li>
-                </ul>
-                <partial name="_ArticleDetailRightSideBarPartial" model="@Model.ArticleDetailRightSideBarViewModel"></partial>
+            <div class="col-lg-4 sidebar-widgets">
+                <partial name="_ArticleDetailRightSideBarPartial" model="@Model.ArticleDetailRightSideBarViewModel" />
             </div>
         </div>
     </div>
 </section>
+
 
 @section Scripts{
     <script src="~/js/BlogHome/articleDetail.js" type="text/ecmascript"></script>

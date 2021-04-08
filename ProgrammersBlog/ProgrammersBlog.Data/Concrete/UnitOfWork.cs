@@ -16,8 +16,8 @@ namespace ProgrammersBlog.Data.Concrete
         private readonly EfArticleRepository _efArticleRepository;
         private readonly EfCategoryRepository _efCategoryRepository;
         private readonly EfCommentRepository _efCommentRepository;
-        
-
+        private readonly EfContactRepository _efContactRepository;
+        private readonly EfPageRepository _efPageRepository;
 
         public UnitOfWork(ProgrammersBlogContext context)
         {
@@ -31,7 +31,9 @@ namespace ProgrammersBlog.Data.Concrete
 
         public ICommentRepository Comments => _efCommentRepository ?? new EfCommentRepository(_context);
 
-       
+        public IContactRepository Contact => _efContactRepository ?? new EfContactRepository(_context);
+
+        public IPageRepository Pages => _efPageRepository ?? new EfPageRepository(_context);
 
         public async ValueTask DisposeAsync()
         {

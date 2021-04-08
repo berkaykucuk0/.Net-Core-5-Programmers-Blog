@@ -21,7 +21,7 @@ namespace ProgrammersBlog.Mvc.ViewComponents
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var categoriesResult = await _categoryService.GetAllByNotDeletedAndActiveAsync();
-            var articlesResult = await _articleService.GetAllViewCountAsync(isAscending:false,4);
+            var articlesResult = await _articleService.GetAllViewCountAsync(isAscending:false,10);
 
             return View(new RightSiteBarViewModel
             {

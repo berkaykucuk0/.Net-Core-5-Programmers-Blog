@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
  
-    $(function () {
+    
        
         $(document).on('click', '#btnSave', function (event) {
         
@@ -60,5 +60,5 @@
             });
 
         });
-    });
+    
 });

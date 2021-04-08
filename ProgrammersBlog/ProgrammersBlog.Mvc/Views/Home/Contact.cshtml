@@ -1,4 +1,4 @@
-﻿@model ProgrammersBlog.Entities.Dtos.EmailSendDto
+﻿@model ProgrammersBlog.Mvc.Models.ContactViewModel
 @{
     Layout = "_LayoutAbout";
     ViewBag.Title = "İletişim";
@@ -15,9 +15,9 @@
         <div class="row d-flex align-items-center justify-content-center">
             <div class="about-content col-lg-12">
                 <h1 class="text-white">
-                   İletişim
+                    İletişim
                 </h1>
-                <p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="contact.html"> İletişim</a></p>
+                <p class="text-white link-nav"><a asp-controller="Home" asp-action="Index">Anasayfa </a>  <span class="lnr lnr-arrow-right"></span>  <a asp-controller="Home" asp-action="Contact">İletişim</a></p>
             </div>
         </div>
     </div>
@@ -27,33 +27,32 @@
 <section class="contact-page-area section-gap">
     <div class="container">
         <div class="row">
-            @*<div class="map-wrap" style="width:100%; height: 445px;" id="map"></div>*@
+            <div class="col-md-12" style="margin-bottom:170px">
+               @Html.Raw(Model.ContactDto.Contact.MapIframe)
+            </div>
             <div class="col-lg-4 d-flex flex-column address-wrap">
                 <div class="single-contact-address d-flex flex-row">
                     <div class="icon">
                         <span class="lnr lnr-home"></span>
                     </div>
-                    <div class="contact-details">
-                        <h5>Ataşehir/İstanbul</h5>
-                        <p>
-                           Esatpaşa Mahallesi Yağmur Sokak No 42/5
-                        </p>
+                    <div class="contact-details mt-1">
+                        <h4>@Model.ContactDto.Contact.Address</h4>                       
                     </div>
                 </div>
                 <div class="single-contact-address d-flex flex-row">
                     <div class="icon">
                         <span class="lnr lnr-phone-handset"></span>
                     </div>
-                    <div class="contact-details">
-                        <h5>0 (535) 013 25 52</h5>                        
+                    <div class="contact-details mt-2">
+                        <h4>@Model.ContactDto.Contact.Telephone</h4>                        
                     </div>
                 </div>
                 <div class="single-contact-address d-flex flex-row">
                     <div class="icon">
                         <span class="lnr lnr-envelope"></span>
                     </div>
-                    <div class="contact-details">
-                        <h5>berkay.kucuk@ogr.sakarya.edu.tr</h5>
+                    <div class="contact-details mt-2">
+                        <h4>@Model.ContactDto.Contact.Email</h4>
                        
                     </div>
                 </div>
@@ -62,18 +61,18 @@
                 <form class="form-area contact-form text-right" asp-controller="Home" asp-action="Contact" method="post">
                     <div class="row">
                         <div class="col-lg-6 form-group">
-                            <input placeholder="İsminiz" asp-for="Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'İsminiz'" class="common-input mb-20 form-control" type="text"><span class="text-danger" asp-validation-for="Name"></span>
+                            <input placeholder="İsminiz" asp-for="EmailSendDto.Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'İsminiz'" class="common-input mb-20 form-control" type="text"><span class="text-danger" asp-validation-for="EmailSendDto.Name"></span>
 
-                            <input placeholder="E-mail Adresiniz" asp-for="Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'E-mail Adresiniz'" class="common-input mb-20 form-control"   type="email"><span class="text-danger" asp-validation-for="Email"></span>
+                            <input placeholder="E-mail Adresiniz" asp-for="EmailSendDto.Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'E-mail Adresiniz'" class="common-input mb-20 form-control"   type="email"><span class="text-danger" asp-validation-for="EmailSendDto.Email"></span>
 
-                            <input  placeholder="Konu" asp-for="Subject" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Konu'" class="common-input mb-20 form-control"  type="text"><span class="text-danger" asp-validation-for="Subject"></span>
+                            <input  placeholder="Konu" asp-for="EmailSendDto.Subject" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Konu'" class="common-input mb-20 form-control"  type="text"><span class="text-danger" asp-validation-for="EmailSendDto.Subject"></span>
                         </div>
                         <div class="col-lg-6 form-group">
-                            <textarea class="common-textarea form-control" asp-for="Message"  placeholder="Mesajınız" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Mesajınız'" ></textarea><span class="text-danger" asp-validation-for="Message"></span>
+                            <textarea class="common-textarea form-control" asp-for="EmailSendDto.Message"  placeholder="Mesajınız" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Mesajınız'" ></textarea><span class="text-danger" asp-validation-for="EmailSendDto.Message"></span>
                         </div>
                         <div class="col-lg-12">
                             <div class="alert-msg" style="text-align: left;"></div>
-                            <button type="submit" class="btn btn-success" style="background-color:darkorange">Gönder</button>
+                            <button type="submit" class="mt-40 text-uppercase genric-btn primary text-center" id="btnSave">Gönder</button>
                         </div>
                     </div>
                 </form>
@@ -81,29 +80,3 @@
         </div>
     </div>
 </section>
-
-@*<link rel="stylesheet" href="css/linearicons.css">
-<link rel="stylesheet" href="css/font-awesome.min.css">
-<link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="css/magnific-popup.css">
-<link rel="stylesheet" href="css/nice-select.css">
-<link rel="stylesheet" href="css/animate.min.css">
-<link rel="stylesheet" href="css/owl.carousel.css">
-<link rel="stylesheet" href="css/jquery-ui.css">
-<link rel="stylesheet" href="css/main.css">*@
-
-
-@*<script src="js/vendor/jquery-2.2.4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="js/vendor/bootstrap.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
-    <script src="js/easing.min.js"></script>
-    <script src="js/hoverIntent.js"></script>
-    <script src="js/superfish.min.js"></script>
-    <script src="js/jquery.ajaxchimp.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/jquery.tabs.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/mail-script.js"></script>
-    <script src="js/main.js"></script>*@

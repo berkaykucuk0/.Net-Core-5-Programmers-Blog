@@ -53,7 +53,7 @@ namespace ProgrammersBlog.Mvc.Helpers.Concrete
             // Parametre ile gelen değerler kullanılarak yeni bir resim adı oluşturulur.
             // Örn: AlperTunga_587_5_38_12_3_10_2020.png
             */
-            string newFileName = $"{name}_{dateTime.FullDateTimeStringWithUnderscore()}{fileExtension}";
+            string newFileName = $"_{dateTime.FullDateTimeStringWithUnderscore()}{fileExtension}";
 
             /* Kendi parametrelerimiz ile sistemimize uygun yeni bir dosya yolu (path) oluşturulur. */
             var path = Path.Combine($"{_wwwroot}/{imgFolder}/{folderName}", newFileName);

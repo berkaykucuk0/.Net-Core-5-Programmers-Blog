@@ -1,72 +1,63 @@
 ﻿@model ProgrammersBlog.Mvc.Models.ArticleDetailRightSideBarViewModel
 @{
 }
+<div class="widget-wrap">
 
-    <!-- Categories Widget -->
-    <div class="card my-4">
-        <img src="~/img/@Model.User.Picture" class="card-img-top text-center img-thumbnail mt-1 mb-1" alt="@Model.User.UserName" />
-        <h5 class="card-header text-center">@Model.User.UserName</h5>
-        <div class="card-body">
-            <p class="card-text text-center">@Model.User.About</p>
-            <div class="card-footer text-center">
-                <p>Sosyal Medya Linkleri</p>
-                @if (Model.User.LinkedInLink != null)
-                {
-                    <a href="@Model.User.LinkedInLink" class="fa fa-linkedin"></a>
-                }
-                @if (Model.User.GitHubLink != null)
-                {
-                    <a href="@Model.User.GitHubLink" class="fa fa-github-square"></a>
-                }
-                @if (Model.User.FacebookLink != null)
-                {
-                    <a href="@Model.User.FacebookLink" class="fa fa-facebook"></a>
-                }
-                @if (Model.User.InstagramLink != null)
-                {
-                    <a href="@Model.User.InstagramLink" class="fa fa-instagram"></a>
-                }
-                @if (Model.User.TwitterLink != null)
-                {
-                    <a href="@Model.User.TwitterLink" class="fa fa-twitter"></a>
-                }
-                @if (Model.User.YoutubeLink != null)
-                {
-                    <a href="@Model.User.YoutubeLink" class="fa fa-youtube"></a>
-                }
-                @if (Model.User.WebsiteLink != null)
-                {
-                    <a href="@Model.User.WebsiteLink" class="fa fa-rss"></a>
-                }
-            </div>
-        </div>
+    <div class="single-sidebar-widget user-info-widget">
+        <img src="~/img/@Model.User.Picture" style="width:300px;height:300px;border-radius:50%" class="card-img-top text-center img-thumbnail mt-1 mb-1" alt="@Model.User.UserName" />
+        <a href="#"><h4 style="font-size: 32px;">@Model.User.UserName</h4></a>
+        <hr />
+        <p class="mt-3 mb-4">
+            @Model.User.About
+        </p>
+        <ul class="social-links">
+            @if (Model.User.LinkedInLink != null)
+            {
+                <li><a href="@Model.User.LinkedInLink"><i class="fab fa-linkedin fa-3x"></i></a></li>
+            }
+            @if (Model.User.GitHubLink != null)
+            {
+                <li><a href="@Model.User.GitHubLink"><i class="fab fa-github fa-3x"></i></a></li>
+            }
+            @if (Model.User.FacebookLink != null)
+            {
+                <li><a href="@Model.User.FacebookLink"><i class="fab fa-facebook fa-3x"></i></a></li>
+            }
+            @if (Model.User.InstagramLink != null)
+            {
+                <li><a href="@Model.User.InstagramLink"><i class="fab fa-instagram-square fa-3x"></i></a></li>
+            }
+            @if (Model.User.TwitterLink != null)
+            {
+                <li><a href="@Model.User.TwitterLink" ><i class="fab fa-twitter fa-3x"></i></a></li>
+            }
+            @if (Model.User.YoutubeLink != null)
+            {
+                <li><a href="@Model.User.YoutubeLink"><i class="fab fa-youtube-square fa-3x"></i> </a></li>
+            }
+            @if (Model.User.WebsiteLink != null)
+            {
+                <li><a href="@Model.User.WebsiteLink"><i class="far fa-address-book fa-3x"></i></a></li>
+            }
+        </ul>
     </div>
-
-    <!-- Side Widget -->
-    <div class="card my-4">
-        <h5 class="card-header">@Model.Header</h5>
-        <div class="card-body">
-            <div class="row">
-                <div class="col-lg-12">
-                    <ul class="list-group">
-                        @for (int i = 0; i < Model.ArticleListDto.Articles.Count; i++)
-                        {
-                            if (i % 2 == 0)
-                            {
-                                <li class="list-group-item list-group-item-primary">
-                                    <a asp-controller="Article" asp-action="Detail" asp-route-articleId="@Model.ArticleListDto.Articles[i].Id">@Model.ArticleListDto.Articles[i].Title</a>
-                                </li>
-                            }
-                            else
-                            {
-                                <li class="list-group-item list-group-item-info">
-                                    <a asp-controller="Article" asp-action="Detail" asp-route-articleId="@Model.ArticleListDto.Articles[i].Id">@Model.ArticleListDto.Articles[i].Title</a>
-                                </li>
-                            }
-                        }
-
-                    </ul>
+    <div class="single-sidebar-widget popular-post-widget">
+        <h4 class="popular-title">@Model.Header</h4>
+        <div class="popular-post-list">
+            @for (int i = 0; i < Model.ArticleListDto.Articles.Count; i++)
+            {
+                <div class="single-post-list d-flex flex-row align-items-center">
+                    <div class="thumb">
+                        <img class="img-fluid"  src="~/img/@Model.ArticleListDto.Articles[i].Thumbnail" alt="">
+                    </div>
+                    <div class="details">
+                        <a asp-controller="Article" asp-action="Detail" asp-route-articleId="@Model.ArticleListDto.Articles[i].Id">@Model.ArticleListDto.Articles[i].Title</a>
+                        <p>@Model.ArticleListDto.Articles[i].CreateDate.ToShortDateString()</p>
+                    </div>
                 </div>
-            </div>
+            }
+
         </div>
     </div>
+   
+</div>

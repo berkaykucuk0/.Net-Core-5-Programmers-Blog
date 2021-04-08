@@ -2,15 +2,18 @@
 @using ProgrammersBlog.Entities.Concrete
 @inject IOptionsSnapshot<WebsiteInfo> WebSiteInfo
 @{ var websiteInfo = WebSiteInfo.Value; }
+@*@model ProgrammersBlog.Mvc.Models.IndexViewModel*@
+
 <header id="header" id="home">
     <div class="header-top">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-sm-6 col-8 header-top-left no-padding">
                     <ul>
-                        <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fab fa-twitter-square"></i></a></li>
-                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="https://www.facebook.com/berkaykucuk1907"><i class="fab fa-facebook-f" style="background:black;"></i></a></li>
+                        <li><a href="https://www.instagram.com/berkaykucuk0/"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="https://twitter.com/berkaykucuk0"><i class="fab fa-twitter"></i></a></li>
+
                     </ul>
                 </div>
                 <div class="col-lg-6 col-sm-6 col-4 header-top-right no-padding">
@@ -22,22 +25,26 @@
     </div>
     <div class="container main-menu">
         <div class="row align-items-center justify-content-between d-flex">
-
+            <div id="logo">
+                <a asp-controller="Home" asp-action="Index"><img src="~/img/logo.png" alt="" title=""></a>
+            </div>
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
                     <li><a asp-controller="Home" asp-action="Index">Anasayfa</a></li>
                     <li><a asp-controller="Home" asp-action="About">Hakkımızda</a></li>
-                    <li><a href="courses.html">Courses</a></li>
+                    <li><a asp-controller="Article" asp-action="GetAllArticles">Makaleler</a></li>
 
                     <li class="menu-has-children">
-                        <a href="">Blog</a>
-                        <ul>
-                            <li><a href="blog-home.html">Blog Home</a></li>
-                            <li><a href="blog-single.html">Blog Single</a></li>
-                        </ul>
+                        <a href="">Kategoriler</a>
+                        @*<ul>
+                        @foreach (var category in Model.CategoryListDto.Category)
+                        {
+                        <li><a asp-controller="Home" asp-action="Index" asp-route-categoryId="@category.Id"></a>@category.Name</li>
+                        }
+                    </ul>*@
                     </li>
                     <li class="menu-has-children">
-                        <a href="">Pages</a>
+                        <a href="#">Pages</a><i class="fas fa-caret-down"></i>
                         <ul>
                             <li><a href="course-details.html">Course Details</a></li>
                             <li><a href="event-details.html">Event Details</a></li>
@@ -51,20 +58,21 @@
                             </li>
                         </ul>
                     </li>
-                    <li><a asp-controller="Home" asp-action="Contact">İletişim</a></li>
+                    <li><a asp-controller="Home" asp-action="Contact">İLETİŞİM</a></li>
                 </ul>
             </nav><!-- #nav-menu-container -->
             <div id="logo">
-                <div class="container h-100">
-                    <div class="d-flex justify-content-center h-100">
-                        <form asp-controller="Article" asp-action="Search" method="get">
-                            <div class="searchbar">
-                                <input class="search_input" type="text" name="keyword" style="color:black" placeholder="Ara...">
-                                <button type="submit" class="search_icon"><i class="fas fa-search"></i></button>
-                            </div>
-                        </form>
+
+                <!-- Navbar Search-->
+                <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0" asp-controller="Article" asp-action="Search" method="get">
+                    <div class="input-group">
+                        <input class="form-control" name="keyword" type="text" placeholder="Arama..." aria-label="Search" aria-describedby="basic-addon2" />
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" style="background-color:#f7631b;border-color:#f7631b" type="submit"><i class="fas fa-search"></i></button>
+                        </div>
                     </div>
-                </div>
+                </form>
+                <!-- Navbar -->
             </div>
         </div>
     </div>

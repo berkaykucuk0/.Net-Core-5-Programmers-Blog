@@ -107,6 +107,53 @@ namespace ProgrammersBlog.Services.Concrete
             }
             return new DataResult<ArticleListDto>(ResultStatus.Error, Messages.Article.NonDeleted(), null);
         }
+
+        public async Task<IDataResult<ArticleListDto>> GetAllByUserAsync(int userId,int takeSize)
+        {
+            var user = await _userManager.FindByIdAsync(userId.ToString());
+            if (user!=null)
+            {
+                var articles = await UnitOfWork.Articles.GetAllAsync(u=>u.UserId==user.Id && u.IsDeleted==false &&u.IsActive==true, c => c.User, c => c.Category);
+                if (articles.Count>-1)
+                {
+                    return new DataResult<ArticleListDto>(ResultStatus.Success, new ArticleListDto
+                    {
+                         Articles=articles,
+                         ResultStatus=ResultStatus.Success,
+                    });
+                }
+                return new DataResult<ArticleListDto>(ResultStatus.Error, Messages.Article.NotFound(isPlural: true), null);
+            }
+            else
+            {
+                return new DataResult<ArticleListDto>(ResultStatus.Error, Messages.Article.NotFound(isPlural: false), null);
+            }
+        }
+
+        public async Task<IDataResult<ArticleListDto>> GetAllByUserAndViewCountAsync(int userId, int takeSize)
+        {
+            var user = await _userManager.FindByIdAsync(userId.ToString());
+            if (user != null)
+            {
+                var articles = await UnitOfWork.Articles.GetAllAsync(u => u.UserId == userId && u.IsDeleted == false && u.IsActive == true,
+                    c => c.User, c => c.Category);               
+                    var sortedArticles = articles.Take(takeSize).OrderByDescending(a => a.ViewsCount).ToList();
+                if (sortedArticles.Count>=-1)
+                {
+                    return new DataResult<ArticleListDto>(ResultStatus.Success, new ArticleListDto
+                    {
+                        Articles = sortedArticles,
+                        ResultStatus = ResultStatus.Success,
+                    });
+                }
+                return new DataResult<ArticleListDto>(ResultStatus.Error, Messages.Article.NotFound(isPlural: true), null);
+            }
+            else
+            {
+                return new DataResult<ArticleListDto>(ResultStatus.Error, Messages.Article.NotFound(isPlural: false), null);
+            }
+        }
+
         public async Task<IDataResult<ArticleListDto>> GetAllByCategoryAsync(int categoryId)
         {
             var result = await UnitOfWork.Categories.AnyAsync(c => c.Id == categoryId);
@@ -123,9 +170,9 @@ namespace ProgrammersBlog.Services.Concrete
                     });
 
                 }
-                return new DataResult<ArticleListDto>(ResultStatus.Error, Messages.Article.NonDeleted(), null);
+                return new DataResult<ArticleListDto>(ResultStatus.Error, Messages.Article.NotFound(isPlural:false), null);
             }
-            return new DataResult<ArticleListDto>(ResultStatus.Error, Messages.Article.NonDeleted(), null);
+            return new DataResult<ArticleListDto>(ResultStatus.Error, Messages.Article.NotFound(isPlural: false), null);
         }
 
         public async Task<IDataResult<ArticleListDto>> GetAllByNotDeletedAsync()
@@ -354,5 +401,7 @@ namespace ProgrammersBlog.Services.Concrete
                 Articles = sortedArticles
             });
         }
+
+        
     }
 }

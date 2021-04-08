@@ -44,7 +44,7 @@
                                             user.LastName,
                                             user.PhoneNumber,
                                             user.About.length > 75 ? user.About.substring(0, 75) : user.About,
-                                            `<img src="/img/${user.Picture}" alt="${user.UserName}" class="my-image-table" />`,
+                                            `<img src="/img/${user.Picture}" alt="${user.UserName}" style="max-height:50px; max-width:50px;" class="my-image-table" />`,
                                             `
                                 <button class="btn btn-info btn-sm btn-detail" data-id="${user.Id}"><span class="fas fa-newspaper"></span></button>
                                 <button class="btn btn-warning btn-sm btn-assign" data-id="${user.Id}"><span class="fas fa-user-shield"></span></button>
@@ -153,7 +153,7 @@
                                 userAddAjaxModel.UserDto.User.LastName,
                                 userAddAjaxModel.UserDto.User.PhoneNumber,
                                 userAddAjaxModel.UserDto.User.About.length > 75 ? userAddAjaxModel.UserDto.User.About.substring(0, 75) : userAddAjaxModel.UserDto.User.About,
-                                `<img src="/img/${userAddAjaxModel.UserDto.User.Picture}" alt="${userAddAjaxModel.UserDto.User.UserName}" class="my-image-table" />`,
+                                `<img src="/img/${userAddAjaxModel.UserDto.User.Picture}" alt="${userAddAjaxModel.UserDto.User.UserName}" class="my-image-table"  style="max-height:50px; max-width:50px;"/>`,
                                 `
                                 <button class="btn btn-info btn-sm btn-detail" data-id="${userAddAjaxModel.UserDto.User.Id}"><span class="fas fa-newspaper"></span></button>
                                 <button class="btn btn-warning btn-sm btn-assign" data-id="${userAddAjaxModel.UserDto.User.Id}"><span class="fas fa-user-shield"></span></button>
@@ -288,7 +288,7 @@
                                 userUpdateAjaxModel.UserDto.User.LastName,
                                 userUpdateAjaxModel.UserDto.User.PhoneNumber,
                                 userUpdateAjaxModel.UserDto.User.About.length > 75 ? userUpdateAjaxModel.UserDto.User.About.substring(0, 75) : userUpdateAjaxModel.UserDto.User.About,
-                                `<img src="/img/${userUpdateAjaxModel.UserDto.User.Picture}" alt="${userUpdateAjaxModel.UserDto.User.UserName}" class="my-image-table" />`,
+                                `<img src="/img/${userUpdateAjaxModel.UserDto.User.Picture}" style="max-height:50px; max-width:50px;" alt="${userUpdateAjaxModel.UserDto.User.UserName}" class="my-image-table" />`,
                                 `
                                 <button class="btn btn-info btn-sm btn-detail" data-id="${userUpdateAjaxModel.UserDto.User.Id}"><span class="fas fa-newspaper"></span></button>
                                 <button class="btn btn-warning btn-sm btn-assign" data-id="${userUpdateAjaxModel.UserDto.User.Id}"><span class="fas fa-user-shield"></span></button>

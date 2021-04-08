@@ -19,14 +19,15 @@ namespace ProgrammersBlog.Mvc.Controllers
             _articleService = articleService;
         }
         [HttpGet]
-        public async Task<IActionResult> Search(string keyword, bool isAscending= false)
+        public async Task<IActionResult> Search(string keyword, bool isAscending = false)
         {
             var searchResult = await _articleService.SearchAsync(keyword, isAscending);
-            if (searchResult.ResultStatus==ResultStatus.Success)
+            if (searchResult.ResultStatus == ResultStatus.Success)
             {
-                return View(new ArticleSearchViewModel {
-                 ArticleListDto =searchResult.Data,
-                  keyword = keyword
+                return View(new ArticleSearchViewModel
+                {
+                    ArticleListDto = searchResult.Data,
+                    keyword = keyword
                 });
             }
             return NotFound();
@@ -36,23 +37,40 @@ namespace ProgrammersBlog.Mvc.Controllers
         public async Task<IActionResult> Detail(int articleId)
         {
             var articleResult = await _articleService.GetAsync(articleId);
-            if (articleResult.ResultStatus==ResultStatus.Success)
+            if (articleResult.ResultStatus == ResultStatus.Success)
             {
-                var userArticles = await _articleService.GetAllByUserIdOnFilter(articleResult.Data.Article.UserId,FilterBy.Category
-                    ,OrderBy.Date,isAscending:false,5,articleResult.Data.Article.CategoryId,DateTime.Now,DateTime.Now,0,99999,0,99999);
+                var userArticles = await _articleService.GetAllByUserIdOnFilter(articleResult.Data.Article.UserId, FilterBy.Category
+                    , OrderBy.Date, isAscending: false, 5, articleResult.Data.Article.CategoryId, DateTime.Now, DateTime.Now, 0, 99999, 0, 99999);
 
                 await _articleService.IncreaseViewCountAsync(articleId);
-                return View(new ArticleDetailViewModel {
-                          ArticleDto = articleResult.Data,
-                           ArticleDetailRightSideBarViewModel = new ArticleDetailRightSideBarViewModel
-                           {
-                                ArticleListDto=userArticles.Data,
-                                Header = "Kullanıcının Kategorideki en çok okunan makaleleri",
-                                User=articleResult.Data.Article.User
-                           }
+                return View(new ArticleDetailViewModel
+                {
+                    ArticleDto = articleResult.Data,
+                    ArticleDetailRightSideBarViewModel = new ArticleDetailRightSideBarViewModel
+                    {
+                        ArticleListDto = userArticles.Data,
+                        Header = "Kullanıcının Kategorideki en çok okunan makaleleri",
+                        User = articleResult.Data.Article.User
+                    }
                 });
             }
             return NotFound();
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllArticles()
+        {
+            var result = await _articleService.GetAllByNotDeletedAsync();
+            if (result.ResultStatus == ResultStatus.Success)
+            {
+                return View(result.Data);
+            }
+            else
+            {
+                return NotFound();
+            }
+
         }
     }
 }

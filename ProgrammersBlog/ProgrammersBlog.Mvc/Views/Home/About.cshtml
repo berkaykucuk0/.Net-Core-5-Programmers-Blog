@@ -6,15 +6,31 @@
     ViewBag.Tags = Model.SeoTags;
     ViewBag.Author = Model.SeoAuthor;
 }
+
+<!-- start banner Area -->
+<section class="banner-area relative about-banner" id="home">
+    <div class="overlay overlay-bg"></div>
+    <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+                <h1 class="text-white">
+                    İletişim
+                </h1>
+                <p class="text-white link-nav"><a asp-controller="Home" asp-action="Index">Anasayfa </a>  <span class="lnr lnr-arrow-right"></span>  <a asp-controller="Home" asp-action="About"> Hakkımızda</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End banner Area -->
 <div class="container-fluid">
     <div class="jumbotron mt-4">
         <div class="d-flex align-items-center h-100">
             <div class="container text-center py-5">
-                <img src="~/img/userImages/defaultUser.png" alt="ProgrammersBlogLogo" class="img-fluid mb-1" style="max-width:250px;max-height:250px"/>
+                <img src="~/img/hakkinda.jpg" alt="ProgrammersBlogLogo" class="img-fluid mb-1" style="max-width:700px;max-height:500px" />
                 <div class="container mt-4 mb-5">
                     <h2 class="text-center py-3 mb-5">@Model.Header</h2>
                     <div class="text-center">
-                        <p>@Model.Content</p>
+                        <p style="font-size:19px;color:black;line-height: 2.300em;">@Model.Content</p>
                     </div>
                 </div>
             </div>

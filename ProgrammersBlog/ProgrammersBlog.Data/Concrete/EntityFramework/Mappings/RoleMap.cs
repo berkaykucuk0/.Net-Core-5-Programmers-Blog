@@ -199,13 +199,41 @@ namespace ProgrammersBlog.Data.Concrete.EntityFramework.Mappings
                     NormalizedName = "ADMINAREA.HOME.READ",
                     ConcurrencyStamp = Guid.NewGuid().ToString()
                 },
+                 new Role
+                 {
+                     Id = 22,
+                     Name = "SuperAdmin",
+                     NormalizedName = "SUPERADMIN",
+                     ConcurrencyStamp = Guid.NewGuid().ToString()
+                 },
             new Role
                 {
-                    Id = 22,
-                    Name = "SuperAdmin",
-                    NormalizedName = "SUPERADMIN",
+                    Id = 23,
+                    Name = "Page.Read",
+                    NormalizedName = "PAGE.READ",
                     ConcurrencyStamp = Guid.NewGuid().ToString()
-                }
+                },
+              new Role
+              {
+                  Id = 24,
+                  Name = "Page.Create",
+                  NormalizedName = "PAGE.CREATE",
+                  ConcurrencyStamp = Guid.NewGuid().ToString()
+              },
+                  new Role
+                  {
+                      Id = 25,
+                      Name = "Page.Update",
+                      NormalizedName = "PAGE.UPDATE",
+                      ConcurrencyStamp = Guid.NewGuid().ToString()
+                  },
+              new Role
+              {
+                  Id = 26,
+                  Name = "Page.Delete",
+                  NormalizedName = "PAGE.DELETE",
+                  ConcurrencyStamp = Guid.NewGuid().ToString()
+              }
             );
                 
         }

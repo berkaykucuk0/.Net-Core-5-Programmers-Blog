@@ -16,7 +16,9 @@ namespace ProgrammersBlog.Services.Abstract
         Task<IDataResult<ArticleListDto>> GetAllAsync();
         Task<IDataResult<ArticleListDto>> GetAllByNotDeletedAsync();
         Task<IDataResult<ArticleListDto>> GetAllByNotDeletedAndActiveAsync();
+        Task<IDataResult<ArticleListDto>> GetAllByUserAsync(int userId,int takeSize);
         Task<IDataResult<ArticleListDto>> GetAllByCategoryAsync(int categoryId);
+        Task<IDataResult<ArticleListDto>> GetAllByUserAndViewCountAsync(int userId,int takeSize);
         Task<IDataResult<ArticleListDto>> GetAllViewCountAsync(bool isAscending,int? takeSize); //ilki sıralama ikincisi kaç tane makale       
         Task<IDataResult<ArticleListDto>> GetAllByUserIdOnFilter(int userId, FilterBy filterBy,OrderBy orderBy,bool isAscending,int takeSize,int categoryId
             ,DateTime startAt,DateTime endAt,int minViewCount,int maxViewCount,int minCommentCount,int maxCommentCount);

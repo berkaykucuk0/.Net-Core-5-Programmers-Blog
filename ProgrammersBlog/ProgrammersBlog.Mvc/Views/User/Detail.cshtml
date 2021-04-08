@@ -1,0 +1,113 @@
+﻿@model ProgrammersBlog.Mvc.Models.UserDetailViewModel
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "Yazar Detay";
+}
+
+<!-- start banner Area -->
+<section class="banner-area relative about-banner" id="home">
+    <div class="overlay overlay-bg"></div>
+    <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+                <h1 class="text-white">
+                    Yazar Detay
+                </h1>
+                <p class="text-white link-nav"><a asp-controller="User" asp-action="Detail" asp-route-userId="@Model.User.Id"> Yazar Detay </a>  <span class="lnr lnr-arrow-right"></span> 
+                <a asp-controller="User" asp-action="Detail" asp-route-userId="@Model.User.Id">@Model.User.FirstName @Model.User.LastName</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End banner Area -->
+<!-- Start course-details Area -->
+<section class="course-details-area pt-40">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 left-contents">
+                <div class="main-image">
+                    <img class="rounded mx-auto d-block mb-3" style="max-width:500px; max-height:500px" src="~/img/@Model.User.Picture" alt="@Model.User.UserName">
+                </div>
+                <div class="jq-tab-wrapper" id="horizontalTab">
+                    <div class="jq-tab-menu">
+                        <div class="jq-tab-title active" data-tab="1">Hakkında</div>                      
+                        <div class="jq-tab-title" data-tab="3">Yazarın Makaleleri</div>                     
+                    </div>
+                    <div class="jq-tab-content-wrapper">
+                        <div class="jq-tab-content active" data-tab="1">
+                            @Model.User.About
+                        </div>
+                        <div class="jq-tab-content" data-tab="3">
+                            <ul class="course-list">
+                                @foreach (var article in Model.ArticleListDto.Articles)
+                                {
+                                    <li class="justify-content-between d-flex">
+                                        <p>@article.Title</p>
+                                        <a class="primary-btn text-uppercase" asp-controller="Article" asp-action="Detail" asp-route-articleId="@article.Id">Tümünü Gör</a>
+                                    </li>
+
+                                }
+                            </ul>
+                        </div>
+                   
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 right-contents">
+                <ul>
+                    <li>
+                        <a class="justify-content-between d-flex" href="#">
+                            <p style="font-size:19px ; font-weight:bold">Yazar Adı</p>
+                            <span class="or" style="font-size: 17px">@Model.User.FirstName @Model.User.LastName</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="justify-content-between d-flex mb-3" style="font-size:19px ; font-weight:bold" href="#">
+                            <p class="mt-1">Sosyal Medya</p>
+
+                            @if (Model.User.LinkedInLink != null)
+                            {
+                                <span><a href="@Model.User.LinkedInLink"><i class="fab fa-linkedin fa-3x mr-4"></i></a></span>
+                            }
+
+                            @if (Model.User.FacebookLink != null)
+                            {
+                                <span><a href="@Model.User.FacebookLink"><i class="fab fa-facebook fa-3x  mr-4"></i></a></span>
+                            }
+                            @if (Model.User.InstagramLink != null)
+                            {
+                                <span><a href="@Model.User.InstagramLink"><i class="fab fa-instagram-square fa-3x  mr-4"></i></a></span>
+                            }
+                            @if (Model.User.TwitterLink != null)
+                            {
+                                <span><a href="@Model.User.TwitterLink"><i class="fab fa-twitter fa-3x  mr-4"></i></a></span>
+                            }
+                        </a>
+                    </li>
+                </ul>
+                <div class="single-sidebar-widget popular-post-widget">
+                    <h4 class="popular-title">Yazarın en çok okunan makaleleri</h4>
+                    <div class="popular-post-list">
+
+                        @foreach (var article in Model.MostViewedArticles.Articles)
+                        {
+                        <div class="single-post-list d-flex flex-row align-items-center">
+                            <div class="thumb">
+                                <a asp-controller="Article" asp-action="Detail" asp-route-articleId="@article.Id">
+                                    <img class="img-fluid" src="~/img/@article.Thumbnail" alt="@article.Title"></a>
+                            </div>
+                            <div class="details">
+                                <a asp-controller="Article" asp-action="Detail" asp-route-articleId="@article.Id">
+                                <h6>@article.Title</h6>
+                                </a>
+                                <p>@article.CreateDate.ToShortDateString()</p>
+                            </div>
+                        </div>
+                                }
+                            </div>                       
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End course-details Area -->
