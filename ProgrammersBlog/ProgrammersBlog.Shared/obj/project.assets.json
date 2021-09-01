@@ -7792,23 +7792,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Berkay Küçük\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\kucuk\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Berkay Küçük\\source\\repos\\ProgrammersBlog\\ProgrammersBlog.Shared\\ProgrammersBlog.Shared.csproj",
+      "projectUniqueName": "C:\\Users\\kucuk\\Desktop\\.Net-Core-5-Programmers-Blog\\ProgrammersBlog\\ProgrammersBlog.Shared\\ProgrammersBlog.Shared.csproj",
       "projectName": "ProgrammersBlog.Shared",
-      "projectPath": "C:\\Users\\Berkay Küçük\\source\\repos\\ProgrammersBlog\\ProgrammersBlog.Shared\\ProgrammersBlog.Shared.csproj",
-      "packagesPath": "C:\\Users\\Berkay Küçük\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Berkay Küçük\\source\\repos\\ProgrammersBlog\\ProgrammersBlog.Shared\\obj\\",
+      "projectPath": "C:\\Users\\kucuk\\Desktop\\.Net-Core-5-Programmers-Blog\\ProgrammersBlog\\ProgrammersBlog.Shared\\ProgrammersBlog.Shared.csproj",
+      "packagesPath": "C:\\Users\\kucuk\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\kucuk\\Desktop\\.Net-Core-5-Programmers-Blog\\ProgrammersBlog\\ProgrammersBlog.Shared\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Berkay Küçük\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\kucuk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7866,7 +7867,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }
